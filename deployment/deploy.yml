@@ -12,7 +12,10 @@
   - name: START JAR
     shell: nohup java -jar ~/ansible-demo-0.0.1-SNAPSHOT.jar > ~/log &
   - name: WAIT FOR STARTING UP
-    shell: echo 1
-  - name: SPEAK DEPLOY DONE!
-    say:
-      msg: "Deploy Done!"
+    uri:
+      url: "http://localhost:8080"
+      status_code: 200
+    register: result
+    until: result.status == 200
+    retries: 60
+    delay: 10
