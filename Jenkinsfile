@@ -15,8 +15,8 @@ pipeline {
         }
 
         stage('Dump Restore') {
-            input 'Proceed?'
             steps {
+                input 'Proceed?'
                 sh "ansible-playbook -v ./deployment/restore.yml -i ./deployment/inventory"
             }
         }
