@@ -8,12 +8,6 @@ pipeline {
             }
         }
 
-        stage('Migrate') {
-            steps {
-                sh "./gradlew flywayMigrate"
-            }
-        }
-
         stage('Deploy') {
             steps {
                 sh "ansible-playbook -v ./deployment/deploy.yml -i ./deployment/inventory"
