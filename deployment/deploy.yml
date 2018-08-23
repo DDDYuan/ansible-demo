@@ -8,7 +8,7 @@
       src: ../build/libs/ansible-demo-0.0.1.jar
       dest: ~/
   - name: KILL PREVIOUS JAR
-    shell: kill $(lsof -t -i :8080) || true
+    shell: kill $(lsof -t -i :8090) || true
   - name: START JAR
     shell: nohup java -jar ~/ansible-demo-0.0.1.jar > ~/log &
   - name: WAIT FOR STARTING UP
