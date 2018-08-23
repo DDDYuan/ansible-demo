@@ -1,0 +1,14 @@
+---
+- name: restore dump file to mysql DB
+  hosts: host
+  remote_user: dyuan
+  tasks:
+  - name: COPY DUMP FILE
+    copy:
+      src: ../dump/demo.dump
+      dest: ~/
+  - name: RESTORE FILE
+    mysql_db:
+      name: demo
+      state: import
+      target: ~/demo.dump
